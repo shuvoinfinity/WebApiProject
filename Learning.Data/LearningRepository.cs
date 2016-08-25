@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Learning.Data
 {
-    class LearningRepository : ILearningRepository
+    public class LearningRepository : ILearningRepository
     {
         private LearningContext _ctx;
 
@@ -13,6 +13,8 @@ namespace Learning.Data
             _ctx = ctx;
         }
 
+        
+
         public bool CourseExists(int courseId)
         {
             return _ctx.Courses.Any(c => c.Id == courseId);
@@ -20,12 +22,40 @@ namespace Learning.Data
 
         public bool DeleteCourse(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var entity = _ctx.Courses.Find(id);
+                if (entity != null)
+                {
+                    _ctx.Courses.Remove(entity);
+                    return true;
+                }
+            }
+            catch
+            {
+                //ToDo: Logging
+            }
+
+            return false;
         }
 
         public bool DeleteStudent(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var entity = _ctx.Students.Find(id);
+                if (entity != null)
+                {
+                    _ctx.Students.Remove(entity);
+                    return true;
+                }
+            }
+            catch
+            {
+                // TODO Logging
+            }
+
+            return false;
         }
 
         public int EnrollStudentInCourse(int studentId, int courseId, Enrollment enrollment)
@@ -59,7 +89,7 @@ namespace Learning.Data
                 return 0;
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return 0;
             }
@@ -167,37 +197,66 @@ namespace Learning.Data
 
         public bool Insert(Course course)
         {
-            throw new NotImplementedException();
+            try
+            {
+                _ctx.Courses.Add(course);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         public bool insert(Student student)
         {
-            throw new NotImplementedException();
+            try
+            {
+                _ctx.Students.Add(student);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         public bool LoginStudent(string userName, string password)
         {
-            throw new NotImplementedException();
+            var student = _ctx.Students.Where(s => s.UserName == userName).SingleOrDefault();
+
+            if (student != null)
+            {
+                if (student.Password == password)
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         public bool SaveAll()
         {
-            throw new NotImplementedException();
+            return _ctx.SaveChanges() > 0;
         }
 
         public bool Update(Course originalCourse, Course updatedCourse)
         {
-            throw new NotImplementedException();
+            _ctx.Entry(originalCourse).CurrentValues.SetValues(updatedCourse);
+            //To update child entites in Course entity
+            originalCourse.CourseSubject = updatedCourse.CourseSubject;
+            originalCourse.CourseTutor = updatedCourse.CourseTutor;
+
+            return true;
         }
 
         public bool Update(Student originalStudent, Student updatedStudent)
         {
-            throw new NotImplementedException();
+            _ctx.Entry(originalStudent).CurrentValues.SetValues(updatedStudent);
+            return true;
         }
 
-        IQueryable<Student> ILearningRepository.GetAllSubjects()
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }

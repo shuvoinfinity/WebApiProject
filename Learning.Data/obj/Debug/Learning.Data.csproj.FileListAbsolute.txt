@@ -1,0 +1,10 @@
+D:\suroy\Projects\eLearningApp\Learning.Data\obj\Debug\Learning.Data.csprojResolveAssemblyReference.cache
+D:\suroy\Projects\eLearningApp\Learning.Data\bin\Debug\Learning.Data.dll.config
+D:\suroy\Projects\eLearningApp\Learning.Data\bin\Debug\Learning.Data.dll
+D:\suroy\Projects\eLearningApp\Learning.Data\bin\Debug\Learning.Data.pdb
+D:\suroy\Projects\eLearningApp\Learning.Data\bin\Debug\EntityFramework.dll
+D:\suroy\Projects\eLearningApp\Learning.Data\bin\Debug\EntityFramework.SqlServer.dll
+D:\suroy\Projects\eLearningApp\Learning.Data\bin\Debug\EntityFramework.xml
+D:\suroy\Projects\eLearningApp\Learning.Data\bin\Debug\EntityFramework.SqlServer.xml
+D:\suroy\Projects\eLearningApp\Learning.Data\obj\Debug\Learning.Data.dll
+D:\suroy\Projects\eLearningApp\Learning.Data\obj\Debug\Learning.Data.pdb

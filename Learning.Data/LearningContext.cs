@@ -16,7 +16,7 @@ namespace Learning.Data
             Configuration.ProxyCreationEnabled = false;
             Configuration.LazyLoadingEnabled = false;
 
-            Database.SetInitializer(new MigrateDatabaseToLatestVersion<LearningContext, LearningContextMigrationConfiguration>() >);
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<LearningContext, LearningContextMigrationConfiguration>());
         }
 
         public DbSet<Course> Courses { get; set; }

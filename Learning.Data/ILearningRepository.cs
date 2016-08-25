@@ -5,7 +5,7 @@ namespace Learning.Data
 {
     public interface ILearningRepository
     {
-        IQueryable<Student> GetAllSubjects();
+        IQueryable<Subject> GetAllSubjects();
         Subject GetSubject(int subjectId);
 
         IQueryable<Course> GetCoursesBySubject(int subjectId);
