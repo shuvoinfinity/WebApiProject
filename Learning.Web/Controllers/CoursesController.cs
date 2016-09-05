@@ -22,8 +22,8 @@ namespace Learning.Web.Controllers
         public Course GetCourse(int id)
         {
             ILearningRepository repository = new LearningRepository(new LearningContext());
-
-            return repository.GetCourse(id);
+            var course = repository.GetCourse(id, false);
+            return course;
         }
     }
 }
